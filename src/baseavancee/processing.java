@@ -120,7 +120,58 @@ public class processing {
         this.point = point;
     }
     
-    
+    public int process_LRU(){
+         int count = 0;
+        point =0;
+        // set first elements
+        for(int i=0;i<this.size;i++){
+            
+            Case a = new Case(input.elementAt(i).toString(),0);
+            this.buffer.insert_case(a, i);
+        }
+         System.out.println("initial insertion over"); this.showStatus_FIFO();
+          System.out.println("Let's do the rest");
+        
+          int j = this.size;
+         
+         for(int i=j;i<this.input.size();i++){
+            // if the element exists
+           // search the index and put the item in the last case and push back all the other items
+           System.out.print("Input is "+this.input.get(i).toString()+"");
+            boolean exist = false;   
+            if (this.buffer.exist(this.input.get(i).toString())){
+                
+             int last_index = this.buffer.existAt(this.input.get(i).toString());
+             Case a = new Case();
+             a = this.buffer.elementAt(last_index);
+              for(int k=last_index;k<(this.size-1);k++){
+                  this.buffer.insert_case(this.buffer.elementAt(k+1), k);
+              }
+              this.buffer.insert_case(a, this.size-1);
+                
+                this.showStatus_FIFO();
+              //  System.out.println("input is "+this.input.get(i).toString()+ "/ frame exists");
+             
+            }
+            else {
+                // if the item doesn't exist in the buffer  we push back all the
+                // items and we put the input item in the front
+                
+                for(int k=0;k<(this.size-1);k++){
+                this.buffer.insert_case(this.buffer.elementAt(k+1), k);
+                
+            }
+                Case a = new Case(input.elementAt(i).toString(),0);
+                this.buffer.insert_case(a, this.size-1);
+                 this.showStatus_FIFO();
+                count++;
+            }
+          
+        
+        
+    }
+         return count;
+    }
     public int process_FIFO(){
         int count = 0;
         point =0;

@@ -53,6 +53,7 @@ public class Baseavancee {
          */
          
         processing p = new processing();
+       /*
         p.showStatus_SC();
         int missing_sc = p.Process_second_chance();
         p.showStatus_SC();
@@ -61,10 +62,11 @@ public class Baseavancee {
         p.showStatus_FIFO();
          System.out.println("********************************");
         System.out.println("Second chance "+ missing_sc+" \n FIFO "+missing_FIFO);
-        
+        */
+       int missing_LRU = p.process_LRU();
         //double b= 10.0;
         //int c =
-        
+        System.out.println("missinig LRU "+missing_LRU);
          
     }
     
