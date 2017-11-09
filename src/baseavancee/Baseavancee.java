@@ -40,19 +40,19 @@ public class Baseavancee {
          // please uncomment the following code if you want to use random input  normally 
          // distributed centred at 50 with 7 deviance 
         // otherwise the program will ask you to introduce input
-        /*
+        
          Random  a = new Random();
         Vector in = new Vector();
-        for(int i =0;i<500;i++){
-            in.add(new Double((a.nextGaussian()*10+50)).intValue());
+        for(int i =0;i<10000;i++){
+            in.add(new Double((a.nextGaussian()*7+100)).intValue());
         }
          processing p = new processing(in);
          for(int i=0;i<in.size();i++){
              System.out.print(in.elementAt(i)+" ");
          }
-         */
          
-        processing p = new processing();
+         
+       // processing p = new processing();
       
         p.showStatus_SC();
         int missing_sc = p.Process_second_chance();
@@ -64,9 +64,9 @@ public class Baseavancee {
          System.out.println("********************************");
         int missing_LRU = p.process_LRU();
         p.showStatus_LRU();
-        System.out.println("\n Second chance "+ missing_sc+" \n FIFO "+missing_FIFO);
+        System.out.println("\n Second chance "+ missing_sc+" \n FIFO "+missing_FIFO+"\n LRU "+missing_LRU);
         
-        System.out.println("missing LRU "+missing_LRU);
+        System.out.println();
         
       
          
