@@ -132,15 +132,15 @@ public class processing {
             Case a = new Case(input.elementAt(i).toString(),0);
             this.buffer.insert_case(a, i);
         }
-         System.out.println("initial insertion over"); this.showStatus_FIFO();
-          System.out.println("Let's do the rest");
+    //     System.out.println("initial insertion over"); this.showStatus_FIFO();
+    //      System.out.println("Let's do the rest");
         
           int j = this.size;
          
          for(int i=j;i<this.input.size();i++){
             // if the element exists
            // search the index and put the item in the last case and push back all the other items
-           System.out.print("Input is "+this.input.get(i).toString()+"");
+    //       System.out.print("Input is "+this.input.get(i).toString()+"");
             boolean exist = false;   
             if (this.buffer.exist(this.input.get(i).toString())){
                 
@@ -152,7 +152,7 @@ public class processing {
               }
               this.buffer.insert_case(a, this.size-1);
                 
-                this.showStatus_FIFO();
+     //           this.showStatus_FIFO();
               //  System.out.println("input is "+this.input.get(i).toString()+ "/ frame exists");
              
             }
@@ -166,13 +166,14 @@ public class processing {
             }
                 Case a = new Case(input.elementAt(i).toString(),0);
                 this.buffer.insert_case(a, this.size-1);
-                 this.showStatus_FIFO();
+    //             this.showStatus_FIFO();
                 count++;
             }
           
         
         
     }
+    //     System.out.println("end of processing LRU");
          return count;
     }
     public int process_FIFO(){
@@ -184,8 +185,8 @@ public class processing {
             Case a = new Case(input.elementAt(i).toString(),0);
             this.buffer.insert_case(a, i);
         }
-         System.out.println("initial insertion over"); this.showStatus_FIFO();
-          System.out.println("Let's do the rest");
+    //     System.out.println("initial insertion over"); this.showStatus_FIFO();
+     //     System.out.println("Let's do the rest");
         // System.out.println("Beginning of the game");
          
          int j = this.size;
@@ -196,7 +197,7 @@ public class processing {
            
             boolean exist = false;   
             if (this.buffer.exist(this.input.get(i).toString())){
-               this.showStatus_FIFO();
+     //          this.showStatus_FIFO();
               //  System.out.println("input is "+this.input.get(i).toString()+ "/ frame exists");
              
             }
@@ -210,7 +211,7 @@ public class processing {
                   this.buffer.insert_case(new Case(this.input.get(i).toString(),0),point);
                   point = (point +1) % this.size;
                   count++;
-                 this.showStatus_FIFO();
+       //          this.showStatus_FIFO();
                  } catch(Exception e) {
                      
                      System.out.println("Error with inserting new element");
@@ -218,7 +219,7 @@ public class processing {
                
             }
         }
-       System.out.println("end of processing fifo");
+    //   System.out.println("end of processing fifo");
     return count ;}
     
        public int Process_second_chance(){
@@ -236,8 +237,8 @@ public class processing {
            this.buffer.insert_case(a, i);
        }
        
-       System.out.println("initial insertion over"); this.showStatus_SC();
-       System.out.println("Let's do the rest");
+   //    System.out.println("initial insertion over"); this.showStatus_SC();
+   //    System.out.println("Let's do the rest");
       // writer.println("initial insertion over");
      //  writer.println(this.showStatus());
        
@@ -253,13 +254,13 @@ public class processing {
               
               
                 s = "input is "+this.input.get(i).toString()+ "/ frame exists";
-               System.out.println(s); 
+        //       System.out.println(s); 
              //  writer.println(s);
               try{
                this.buffer.insert_case(new Case(this.input.get(i).toString(),1),this.buffer.existAt(this.input.get(i).toString()));
               
                //last = this.buffer.existAt(this.input.get(i).toString());
-               this.showStatus_SC();
+      //         this.showStatus_SC();
             //  writer.println(this.showStatus());
               }catch(Exception e){
                   
@@ -272,7 +273,7 @@ public class processing {
            else{
                 s ="input is "+this.input.get(i).toString()+ "/ frame non existant";
                // System.out.println("input is "+this.input.get(i).toString()+ "/ frame non existant");
-                System.out.println(s);
+         //       System.out.println(s);
              //  writer.println(s);
                point = (last +1)%this.size ;
                count++;
@@ -284,9 +285,9 @@ public class processing {
                }
                
                if(this.buffer.elementAt(point).getFlag()==0){
-                  s = "Free place found here, replacement preparing";
+                //  s = "Free place found here, replacement preparing";
                    //System.out.println("Free place found here, replacement preparing");
-                   System.out.println(s);  //writer.println(s);
+                  // System.out.println(s);  //writer.println(s);
                    
                     try{
                this.buffer.insert_case(new Case(this.input.get(i).toString(),0),point);
@@ -294,7 +295,7 @@ public class processing {
                point = (point +1) % this.size;
             //   writer.println(this.showStatus());
                
-               this.showStatus_SC();
+ //              this.showStatus_SC();
               }catch(Exception e){
                   
                   System.out.println("Problem with replacement here free space charged !");
@@ -302,7 +303,7 @@ public class processing {
                }
            }
        }
-     System.out.println("end of second chance processing");
+    // System.out.println("end of second chance processing");
    return count; }
     
     
@@ -319,6 +320,15 @@ public class processing {
         // if we want to use another input defined in the main class and not entred by user
         // like using the normal distribution : see the commented code in main class 
         this.size = this.getBufferSize();
+        this.input = in;
+        this.buffer= new Buffer(this.size);
+        this.last=-1;
+        this.point=0;
+    }
+    public processing(Vector in, int size) {
+        // if we want to use another input defined in the main class and not entred by user
+        // like using the normal distribution : see the commented code in main class 
+        this.size = size;
         this.input = in;
         this.buffer= new Buffer(this.size);
         this.last=-1;

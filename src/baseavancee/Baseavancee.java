@@ -41,34 +41,39 @@ public class Baseavancee {
          // distributed centred at 50 with 7 deviance 
         // otherwise the program will ask you to introduce input
         
-         Random  a = new Random();
+        
+       for(int b= 3; b<40;b++){
+        
+    
+        Random  a = new Random();
         Vector in = new Vector();
         for(int i =0;i<10000;i++){
             in.add(new Double((a.nextGaussian()*7+100)).intValue());
         }
-         processing p = new processing(in);
-         for(int i=0;i<in.size();i++){
-             System.out.print(in.elementAt(i)+" ");
-         }
+         processing p = new processing(in,b);
+         
+        
          
          
-       // processing p = new processing();
+         // uncomment the following code to introduce your input 
+      // processing p = new processing();
       
-        p.showStatus_SC();
-        int missing_sc = p.Process_second_chance();
+       // p.showStatus_SC();
        
-        p.showStatus_SC();
-        System.out.println("********************************");
+         int missing_sc = p.Process_second_chance();
+       
+       // p.showStatus_SC();
+       // System.out.println("********************************");
         int missing_FIFO = p.process_FIFO();
-        p.showStatus_FIFO();
-         System.out.println("********************************");
+      //  p.showStatus_FIFO();
+       //  System.out.println("********************************");
         int missing_LRU = p.process_LRU();
-        p.showStatus_LRU();
-        System.out.println("\n Second chance "+ missing_sc+" \n FIFO "+missing_FIFO+"\n LRU "+missing_LRU);
+      //  p.showStatus_LRU();
+       // System.out.println("\nNumber of missing pages :\n Second chance "+ missing_sc+" \n FIFO "+missing_FIFO+"\n LRU "+missing_LRU);
         
-        System.out.println();
-        
-      
+      //  System.out.println();
+        System.out.println(b+" "+missing_sc+" "+missing_FIFO+" "+missing_LRU);
+      }
          
     }
     
