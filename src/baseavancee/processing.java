@@ -109,6 +109,9 @@ public class processing {
         System.out.println("");
        // return "pointer on case "+this.point;
     }
+        public void showStatus_LRU(){
+             this.buffer.showStatus_FIFO();
+        }
     
     private int point;
     private int last;
