@@ -6,6 +6,7 @@
 package baseavancee;
 
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -35,19 +36,22 @@ public class Baseavancee {
 
     
  
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
        
          // please uncomment the following code if you want to use random input  normally 
          // distributed centred at 50 with 7 deviance 
         // otherwise the program will ask you to introduce input
         
         
-       for(int b= 3; b<40;b++){
+        PrintWriter writer = new PrintWriter("D:/Output.csv", "UTF-8");
+        writer.println("size,SC,FIFO,LRU");
+        
+       for(int b= 3; b<=50;b++){
         
     
         Random  a = new Random();
         Vector in = new Vector();
-        for(int i =0;i<10000;i++){
+        for(int i =0;i<100000;i++){
             in.add(new Double((a.nextGaussian()*7+100)).intValue());
         }
          processing p = new processing(in,b);
@@ -73,8 +77,11 @@ public class Baseavancee {
         
       //  System.out.println();
         System.out.println(b+" "+missing_sc+" "+missing_FIFO+" "+missing_LRU);
+        String s =b+","+missing_sc+","+missing_FIFO+","+missing_LRU;
+        writer.println(s);
       }
-         
+      
+       writer.close();
     }
     
 }

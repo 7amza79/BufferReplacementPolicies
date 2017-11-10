@@ -169,9 +169,7 @@ public class processing {
     //             this.showStatus_FIFO();
                 count++;
             }
-          
-        
-        
+         
     }
     //     System.out.println("end of processing LRU");
          return count;
