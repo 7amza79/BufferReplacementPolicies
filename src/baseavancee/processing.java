@@ -123,25 +123,27 @@ public class processing {
         this.point = point;
     }
     
-    public int process_LRU(){
+       public int process_LRU(){
          int count = 0;
         point =0;
         // set first elements
+        this.bufferInit();
+       /*
         for(int i=0;i<this.size;i++){
             
             Case a = new Case(input.elementAt(i).toString(),0);
             this.buffer.insert_case(a, i);
         }
-    //     System.out.println("initial insertion over"); this.showStatus_FIFO();
-    //      System.out.println("Let's do the rest");
-        
-          int j = this.size;
-         
-         for(int i=j;i<this.input.size();i++){
+         System.out.println("initial insertion over"); this.showStatus_FIFO();
+          System.out.println("Remaining inputs processing");
+        */
+          
+         for(int i=0;i<this.input.size();i++){
             // if the element exists
            // search the index and put the item in the last case and push back all the other items
-    //       System.out.print("Input is "+this.input.get(i).toString()+"");
-            boolean exist = false;   
+          // System.out.print("Input is "+this.input.get(i).toString()+"");
+            boolean exist = false;  
+           // System.out.print("input "+this.input.get(i).toString());
             if (this.buffer.exist(this.input.get(i).toString())){
                 
              int last_index = this.buffer.existAt(this.input.get(i).toString());
@@ -152,8 +154,7 @@ public class processing {
               }
               this.buffer.insert_case(a, this.size-1);
                 
-     //           this.showStatus_FIFO();
-              //  System.out.println("input is "+this.input.get(i).toString()+ "/ frame exists");
+              
              
             }
             else {
@@ -166,50 +167,57 @@ public class processing {
             }
                 Case a = new Case(input.elementAt(i).toString(),0);
                 this.buffer.insert_case(a, this.size-1);
-    //             this.showStatus_FIFO();
+            //    this.showStatus_FIFO();
                 count++;
             }
-         
+          
+        
+        
     }
-    //     System.out.println("end of processing LRU");
+        // System.out.println("end of processing LRU");
          return count;
     }
     public int process_FIFO(){
         int count = 0;
         point =0;
         // set first elements
+        this.bufferInit();
+       /*
         for(int i=0;i<this.size;i++){
             
             Case a = new Case(input.elementAt(i).toString(),0);
             this.buffer.insert_case(a, i);
         }
-    //     System.out.println("initial insertion over"); this.showStatus_FIFO();
-     //     System.out.println("Let's do the rest");
+         System.out.println("initial insertion over"); this.showStatus_FIFO();
+          System.out.println("Remaining inputs processing");
         // System.out.println("Beginning of the game");
-         
+         */
          int j = this.size;
-         
-         for(int i=j;i<this.input.size();i++){
+         j=0;
+        // this.showStatus_FIFO();
+         for(int i=0;i<this.input.size();i++){
             // if the element exists
            // parse all the buffer to search
            
             boolean exist = false;   
             if (this.buffer.exist(this.input.get(i).toString())){
-     //          this.showStatus_FIFO();
-              //  System.out.println("input is "+this.input.get(i).toString()+ "/ frame exists");
-             
+               //this.showStatus_FIFO();
+               
+        //       System.out.println("input is "+this.input.get(i).toString()+ "/ frame exists");
+            //   this.showStatus_FIFO();
             }
            
             // if the element does not exist
             
             else{
-                // System.out.println("input is "+this.input.get(i).toString()+ "/ frame non existant let's process");
+            //     System.out.println("input is "+this.input.get(i).toString()+ "/ frame non existant ");
                
                  try{
                   this.buffer.insert_case(new Case(this.input.get(i).toString(),0),point);
                   point = (point +1) % this.size;
                   count++;
-       //          this.showStatus_FIFO();
+             //     this.showStatus_FIFO();
+                
                  } catch(Exception e) {
                      
                      System.out.println("Error with inserting new element");
@@ -228,19 +236,21 @@ public class processing {
         last=-1;
         int count = 0;
        // set first elements
-        
-       for(int i=0;i<this.size;i++){
+        this.bufferInit();
+     /*  for(int i=0;i<this.size;i++){
            
            Case a = new Case(input.elementAt(i).toString(),0);
            this.buffer.insert_case(a, i);
        }
        
-   //    System.out.println("initial insertion over"); this.showStatus_SC();
-   //    System.out.println("Let's do the rest");
+       System.out.println("initial insertion over"); this.showStatus_SC();
+       System.out.println("Remaining inputs processing");
       // writer.println("initial insertion over");
      //  writer.println(this.showStatus());
-       
-       int j = this.size;
+       */
+      
+        //int j = this.size;
+        int j=0;
        String s ="";
        // parse all remaining pages 
        for(int i=j;i<this.input.size();i++){
@@ -252,13 +262,13 @@ public class processing {
               
               
                 s = "input is "+this.input.get(i).toString()+ "/ frame exists";
-        //       System.out.println(s); 
+          //     System.out.println(s); 
              //  writer.println(s);
               try{
                this.buffer.insert_case(new Case(this.input.get(i).toString(),1),this.buffer.existAt(this.input.get(i).toString()));
               
                //last = this.buffer.existAt(this.input.get(i).toString());
-      //         this.showStatus_SC();
+          //     this.showStatus_SC();
             //  writer.println(this.showStatus());
               }catch(Exception e){
                   
@@ -271,7 +281,7 @@ public class processing {
            else{
                 s ="input is "+this.input.get(i).toString()+ "/ frame non existant";
                // System.out.println("input is "+this.input.get(i).toString()+ "/ frame non existant");
-         //       System.out.println(s);
+      //          System.out.println(s);
              //  writer.println(s);
                point = (last +1)%this.size ;
                count++;
@@ -283,7 +293,7 @@ public class processing {
                }
                
                if(this.buffer.elementAt(point).getFlag()==0){
-                //  s = "Free place found here, replacement preparing";
+                  s = "Free place found , doing replacement";
                    //System.out.println("Free place found here, replacement preparing");
                   // System.out.println(s);  //writer.println(s);
                    
@@ -293,7 +303,7 @@ public class processing {
                point = (point +1) % this.size;
             //   writer.println(this.showStatus());
                
- //              this.showStatus_SC();
+     //          this.showStatus_SC();
               }catch(Exception e){
                   
                   System.out.println("Problem with replacement here free space charged !");
@@ -301,8 +311,17 @@ public class processing {
                }
            }
        }
-    // System.out.println("end of second chance processing");
-   return count; }
+  //   System.out.println("end of second chance processing");
+   return count; 
+       }
+          public void bufferInit(){
+        
+          for(int i=0;i<this.size;i++){
+            
+            Case a = new Case("-1",0);
+            this.buffer.insert_case(a, i);
+        }
+    }
     
     
     public processing() {

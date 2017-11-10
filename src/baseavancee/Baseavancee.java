@@ -43,7 +43,7 @@ public class Baseavancee {
         // otherwise the program will ask you to introduce input
         
         
-        PrintWriter writer = new PrintWriter("D:/Output.csv", "UTF-8");
+        PrintWriter writer = new PrintWriter("D:/Output2.csv", "UTF-8");
         writer.println("size,SC,FIFO,LRU");
         
        for(int b= 3; b<=50;b++){
