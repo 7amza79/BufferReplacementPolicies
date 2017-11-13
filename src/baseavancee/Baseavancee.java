@@ -45,14 +45,14 @@ public class Baseavancee {
         
         PrintWriter writer = new PrintWriter("D:/Output2.csv", "UTF-8");
         writer.println("size,Clck,FIFO,LRU");
-        
-       for(int b= 3; b<=100;b++){
+        System.out.println("size,Clck,FIFO,LRU");
+       for(int b= 3; b<=50;b++){
         
     
         Random  a = new Random();
         Vector in = new Vector();
         for(int i =0;i<10000;i++){
-            in.add(new Double((a.nextGaussian()*20+100)).intValue());
+            in.add(new Double((a.nextGaussian()*17+100)).intValue());
         }
          processing p = new processing(in,b);
          
