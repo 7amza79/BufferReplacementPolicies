@@ -17,7 +17,7 @@ import java.util.Vector;
  *
  * @author Hamza
  */
-public class Baseavancee {
+public class Comparaison {
 
     /**
      * @param args the command line arguments
@@ -27,7 +27,7 @@ public class Baseavancee {
     private int size ;
     private Vector input;
 
-    public Baseavancee() {
+    public Comparaison() {
         
     }
     
