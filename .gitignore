@@ -1,2 +1,4 @@
 .idea/
+target/
+Output2.csv
 *.iml
