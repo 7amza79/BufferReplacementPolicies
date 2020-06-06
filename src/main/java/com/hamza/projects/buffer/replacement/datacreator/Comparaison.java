@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package baseavancee;
+package com.hamza.projects.buffer.replacement.datacreator;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.Vector;
 
 /**
@@ -43,7 +41,7 @@ public class Comparaison {
         // otherwise the program will ask you to introduce input
         
         
-        PrintWriter writer = new PrintWriter("D:/Output2.csv", "UTF-8");
+        PrintWriter writer = new PrintWriter("Output2.csv", "UTF-8");
         writer.println("size,Clck,FIFO,LRU");
         System.out.println("size,Clck,FIFO,LRU");
        for(int b= 3; b<=50;b++){
