@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.hamza.projects.buffer.replacement.datacreator;
 
 import java.util.Objects;
@@ -28,13 +23,8 @@ public class Case {
         this.flag = flag;
     }
 
-    public Case(String frame){
+    public Case(String frame) {
         this.frame = frame;
-    }
-
-    public Case() {
-        this.frame = "-1";
-        this.flag = 0;
     }
 
     @Override

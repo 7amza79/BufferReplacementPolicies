@@ -14,7 +14,7 @@ public class Buffer {
         this.data = new ArrayList<>();
         this.size = size;
         for (int i = 0; i < size; i++) {
-            data.add(new Case());
+            data.add(new Case("-1", 0));
         }
 
     }
@@ -37,12 +37,5 @@ public class Buffer {
 
     public int getSize() {
         return size;
-    }
-
-    public void bufferInit() {
-        for (int i = 0; i < this.size; i++) {
-            Case a = new Case("-1", 0);
-            this.insertCase(a, i);
-        }
     }
 }

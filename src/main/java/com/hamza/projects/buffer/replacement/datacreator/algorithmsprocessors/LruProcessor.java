@@ -3,6 +3,8 @@ package com.hamza.projects.buffer.replacement.datacreator.algorithmsprocessors;
 import com.hamza.projects.buffer.replacement.datacreator.Buffer;
 import com.hamza.projects.buffer.replacement.datacreator.Case;
 import com.hamza.projects.buffer.replacement.exceptions.CannotCreateProcessorObjectException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -12,12 +14,13 @@ public class LruProcessor {
         throw new CannotCreateProcessorObjectException();
     }
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(LruProcessor.class);
+
     public static int processLRU(List<Integer> inputData, int bufferSize) {
+        LOGGER.info("Start LRU processing");
         int count = 0;
         // set first elements
         Buffer buffer = new Buffer(bufferSize);
-        buffer.bufferInit();
-        final int inBufferSize = buffer.getSize();
 
         for (Integer caseData : inputData) {
             // if the element exists
@@ -25,30 +28,31 @@ public class LruProcessor {
 
             if (buffer.exist(caseData.toString())) {
 
-                int lastIndex = buffer.existAt(caseData.toString());
-                Case a = buffer.elementAt(lastIndex);
-                for (int k = lastIndex; k < (inBufferSize - 1); k++) {
+                final int searchedCasePosition = buffer.existAt(caseData.toString());
+                Case caseToUpdate = buffer.elementAt(searchedCasePosition);
+
+                for (int k = searchedCasePosition; k < (bufferSize - 1); k++) {
                     buffer.insertCase(buffer.elementAt(k + 1), k);
                 }
-                buffer.insertCase(a, inBufferSize - 1);
+                buffer.insertCase(caseToUpdate, bufferSize - 1);
 
 
             } else {
                 // if the item doesn't exist in the buffer  we push back all the
                 // items and we put the input item in the front
 
-                for (int k = 0; k < (inBufferSize - 1); k++) {
+                for (int k = 0; k < (bufferSize - 1); k++) {
                     buffer.insertCase(buffer.elementAt(k + 1), k);
 
                 }
                 Case a = new Case(caseData.toString(), 0);
-                buffer.insertCase(a, inBufferSize - 1);
+                buffer.insertCase(a, bufferSize - 1);
 
                 count++;
             }
 
         }
-        System.out.println("end of processing LRU");
+        LOGGER.info("end of processing LRU with {} fault pages", count);
         return count;
     }
 

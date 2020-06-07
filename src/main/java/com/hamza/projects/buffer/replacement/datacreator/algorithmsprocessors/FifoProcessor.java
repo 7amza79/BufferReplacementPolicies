@@ -21,21 +21,20 @@ public class FifoProcessor {
         // set first elements
 
         Buffer buffer = new Buffer(bufferSize);
-        buffer.bufferInit();
 
-        for (int i = 0; i < bufferSize; i++) {
+        for (Integer caseData : inputData) {
             // if the element exists
             // parse all the buffer to search
 
-            if (buffer.exist(inputData.get(i).toString())) {
-                final String stringToDisplay = "input is " + inputData.get(i).toString() + "/ frame exists";
+            if (buffer.exist(caseData.toString())) {
+                final String stringToDisplay = "input is " + caseData.toString() + "/ frame exists";
                 LOGGER.info(stringToDisplay);
             }
             // if the element does not exist
             else {
-                    buffer.insertCase(new Case(inputData.get(i).toString(), 0), caseToUpdateIndex);
-                    caseToUpdateIndex = (caseToUpdateIndex + 1) % bufferSize;
-                    missingPagesCount++;
+                buffer.insertCase(new Case(caseData.toString(), 0), caseToUpdateIndex);
+                caseToUpdateIndex = (caseToUpdateIndex + 1) % bufferSize;
+                missingPagesCount++;
 
             }
         }
