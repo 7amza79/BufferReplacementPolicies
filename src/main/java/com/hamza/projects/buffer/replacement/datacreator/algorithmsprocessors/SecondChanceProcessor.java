@@ -30,16 +30,10 @@ public class SecondChanceProcessor {
 
             if (buffer.exist(integer.toString())) {
 
-
                 String s = "input is " + integer.toString() + " frame exists";
                 System.out.println(s);
-                try {
-                    buffer.insertCase(new Case(integer.toString(), 1), buffer.existAt(integer.toString()));
+                buffer.insertCase(new Case(integer.toString(), 1), buffer.existAt(integer.toString()));
 
-                } catch (Exception e) {
-
-                    System.out.println("Problem with replacement here frame exists !");
-                }
             }
             // if the element does not exist
 

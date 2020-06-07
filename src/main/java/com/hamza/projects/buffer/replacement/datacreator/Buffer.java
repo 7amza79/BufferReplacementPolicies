@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.hamza.projects.buffer.replacement.datacreator;
 
 import java.util.ArrayList;
 
-/**
- * @author Hamza
- */
 public class Buffer {
 
 
@@ -37,25 +29,10 @@ public class Buffer {
 
     public boolean exist(String a) {
         return this.data.stream().anyMatch(aCase -> aCase.getFrame().equals(a));
-
     }
 
-    public int existAt(String a) {
-
-        int k = 0;
-        int pos = -1;
-        boolean exist = false;
-        while ((k < this.data.size()) && (exist == false)) {
-            if (a.equals(this.data.get(k).getFrame())) {
-
-                // re insert the same element with incremented flag
-
-                exist = true;
-                pos = k;
-                break;
-            } else k++;
-        }
-        return pos;
+    public int existAt(String caseData) {
+        return this.data.indexOf(new Case(caseData));
     }
 
     public int getSize() {
@@ -63,7 +40,6 @@ public class Buffer {
     }
 
     public void bufferInit() {
-
         for (int i = 0; i < this.size; i++) {
             Case a = new Case("-1", 0);
             this.insertCase(a, i);

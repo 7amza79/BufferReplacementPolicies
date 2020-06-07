@@ -19,15 +19,14 @@ public class LruProcessor {
         buffer.bufferInit();
         final int inBufferSize = buffer.getSize();
 
-        for (Integer integer : inputData) {
+        for (Integer caseData : inputData) {
             // if the element exists
             // search the index and put the item in the last case and push back all the other items
 
-            if (buffer.exist(integer.toString())) {
+            if (buffer.exist(caseData.toString())) {
 
-                int lastIndex = buffer.existAt(integer.toString());
-                Case a;
-                a = buffer.elementAt(lastIndex);
+                int lastIndex = buffer.existAt(caseData.toString());
+                Case a = buffer.elementAt(lastIndex);
                 for (int k = lastIndex; k < (inBufferSize - 1); k++) {
                     buffer.insertCase(buffer.elementAt(k + 1), k);
                 }
@@ -42,7 +41,7 @@ public class LruProcessor {
                     buffer.insertCase(buffer.elementAt(k + 1), k);
 
                 }
-                Case a = new Case(integer.toString(), 0);
+                Case a = new Case(caseData.toString(), 0);
                 buffer.insertCase(a, inBufferSize - 1);
 
                 count++;
