@@ -11,6 +11,9 @@ import static com.hamza.projects.buffer.replacement.datacreator.algorithmsproces
 
 class LruProcessorTest {
 
+    public static final ArrayList<Integer> FIRST_TEST_SERIES = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
+    public static final ArrayList<Integer> SECOND_TEST_SERIES = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
+
     @Test
     void lruProcessorShouldReturn_ZeroFaultPages_whenInputLessThanBuffer() {
         //given
@@ -33,10 +36,8 @@ class LruProcessorTest {
         //given
         final int bufferSize = 3;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
-
         //when
-        int missingPagesForLru = LruProcessor.process(inputData, bufferSize);
+        int missingPagesForLru = LruProcessor.process(FIRST_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(12, missingPagesForLru);
@@ -49,10 +50,8 @@ class LruProcessorTest {
         //given
         final int bufferSize = 3;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
-
         //when
-        int missingPagesForLru = LruProcessor.process(inputData, bufferSize);
+        int missingPagesForLru = LruProcessor.process(SECOND_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(9, missingPagesForLru);
@@ -65,10 +64,8 @@ class LruProcessorTest {
         //given
         final int bufferSize = 4;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
-
         //when
-        int missingPagesForLru = LruProcessor.process(inputData, bufferSize);
+        int missingPagesForLru = LruProcessor.process(FIRST_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(2, missingPagesForLru);
@@ -81,10 +78,8 @@ class LruProcessorTest {
         //given
         final int bufferSize = 4;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
-
         //when
-        int missingPagesForLru = LruProcessor.process(inputData, bufferSize);
+        int missingPagesForLru = LruProcessor.process(SECOND_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(4, missingPagesForLru);

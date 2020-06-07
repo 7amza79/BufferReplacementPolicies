@@ -11,6 +11,9 @@ import java.util.Random;
 class FifoProcessorTest {
 
 
+    public static final ArrayList<Integer> FIRST_TEST_SERIES = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
+    public static final ArrayList<Integer> SECOND_TEST_SERIES = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
+
     static List<Integer> getRandomIntegers(final int bufferinitialSize) {
         List<Integer> inputData = new ArrayList<>();
 
@@ -44,10 +47,8 @@ class FifoProcessorTest {
         //given
         final int bufferSize = 3;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
-
         //when
-        int missingPagesForFifo = FifoProcessor.process(inputData, bufferSize);
+        int missingPagesForFifo = FifoProcessor.process(FIRST_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(10, missingPagesForFifo);
@@ -59,10 +60,8 @@ class FifoProcessorTest {
         //given
         final int bufferSize = 3;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
-
         //when
-        int missingPagesForFifo = FifoProcessor.process(inputData, bufferSize);
+        int missingPagesForFifo = FifoProcessor.process(SECOND_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(12, missingPagesForFifo);
@@ -74,10 +73,8 @@ class FifoProcessorTest {
         //given
         final int bufferSize = 4;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
-
         //when
-        int missingPagesForFifo = FifoProcessor.process(inputData, bufferSize);
+        int missingPagesForFifo = FifoProcessor.process(FIRST_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(3, missingPagesForFifo);
@@ -89,10 +86,8 @@ class FifoProcessorTest {
         //given
         final int bufferSize = 4;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
-
         //when
-        int missingPagesForFifo = FifoProcessor.process(inputData, bufferSize);
+        int missingPagesForFifo = FifoProcessor.process(SECOND_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(6, missingPagesForFifo);

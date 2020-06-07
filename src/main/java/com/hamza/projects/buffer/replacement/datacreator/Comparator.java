@@ -33,7 +33,7 @@ public class Comparator {
             writer.println("size,Clock,FIFO,LRU");
             for (int bufferSize = BUFFER_MINIMUM_SIZE; bufferSize <= BUFFER_MAXIMUM_SIZE; bufferSize++) {
 
-                List<Integer> input = initializeInputData(INPUT_SIZE);
+                List<Integer> input = initializeInputData();
 
                 int missingSecondChancePages = SecondChanceProcessor.process(input, bufferSize);
 
@@ -48,10 +48,10 @@ public class Comparator {
         LOGGER.info("End processing");
     }
 
-    private static List<Integer> initializeInputData(final int inputSize) {
+    private static List<Integer> initializeInputData() {
         List<Integer> input = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < inputSize; i++) {
+        for (int i = 0; i < Comparator.INPUT_SIZE; i++) {
             input.add(Double.valueOf((random.nextGaussian() * 17 + 100)).intValue());
         }
         return input;

@@ -11,6 +11,11 @@ import static com.hamza.projects.buffer.replacement.datacreator.algorithmsproces
 
 class SecondChanceProcessorTest {
 
+    public static final ArrayList<Integer> FIRST_TEST_SERIES = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5,
+            3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
+    public static final ArrayList<Integer> SECOND_TEST_SERIES = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2,
+            3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
+
     @Test
     void SecondChanceProcessorShouldReturn_ZeroFaultPages_whenInputLessThanBuffer() {
         //given
@@ -33,10 +38,9 @@ class SecondChanceProcessorTest {
         //given
         final int bufferSize = 3;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
 
         //when
-        int missingPagesForSecondChance = SecondChanceProcessor.process(inputData, bufferSize);
+        int missingPagesForSecondChance = SecondChanceProcessor.process(FIRST_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(11, missingPagesForSecondChance);
@@ -48,10 +52,8 @@ class SecondChanceProcessorTest {
         //given
         final int bufferSize = 3;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
-
         //when
-        int missingPagesForSecondChance = SecondChanceProcessor.process(inputData, bufferSize);
+        int missingPagesForSecondChance = SecondChanceProcessor.process(SECOND_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(8, missingPagesForSecondChance);
@@ -63,10 +65,9 @@ class SecondChanceProcessorTest {
         //given
         final int bufferSize = 4;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 4, 5, 3, 2, 4, 5, 3, 2, 5, 2));
 
         //when
-        int missingPagesForSecondChance = SecondChanceProcessor.process(inputData, bufferSize);
+        int missingPagesForSecondChance = SecondChanceProcessor.process(FIRST_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(2, missingPagesForSecondChance);
@@ -78,10 +79,8 @@ class SecondChanceProcessorTest {
         //given
         final int bufferSize = 4;
 
-        List<Integer> inputData = new ArrayList<>(Arrays.asList(7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1));
-
         //when
-        int missingPagesForSecondChance = SecondChanceProcessor.process(inputData, bufferSize);
+        int missingPagesForSecondChance = SecondChanceProcessor.process(SECOND_TEST_SERIES, bufferSize);
 
         //then
         Assertions.assertEquals(4, missingPagesForSecondChance);
