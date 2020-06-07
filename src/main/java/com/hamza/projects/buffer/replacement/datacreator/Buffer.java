@@ -11,10 +11,6 @@ public class Buffer {
     public Buffer(int size) {
         bufferLimitSize = size;
         this.data = new ArrayList<>();
-        //for (int i = 0; i < size; i++) {
-        //    data.add(new Case("-1", 0));
-        //}
-
     }
 
     public void insertCase(Case a, int place) {
