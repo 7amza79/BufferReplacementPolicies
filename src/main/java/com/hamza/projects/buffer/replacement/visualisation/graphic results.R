@@ -1,8 +1,8 @@
 library(data.table)
 
 
-png("bd_5.png", width = 920, height = 920)
-tab <- read.table("Output2.csv", header = TRUE, sep = ",")
+png("output_graph.png", width = 920, height = 920)
+tab <- read.table("Output.csv", header = TRUE, sep = ",")
 plot(x = tab$size, y = tab$Clock, type = "l", col = "black",
      ylab = "Number of page faults", xlab = "buffer size", lwd = "2",
      main = "Performance comparaison of cache replacement 

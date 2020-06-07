@@ -4,12 +4,9 @@ import java.util.ArrayList;
 
 public class Buffer {
 
-
     private final ArrayList<Case> data;
 
-
     public Buffer(int size) {
-
         this.data = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             data.add(new Case("-1", 0));
