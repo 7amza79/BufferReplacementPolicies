@@ -5,14 +5,12 @@ import java.util.ArrayList;
 public class Buffer {
 
 
-    private final int size;
     private final ArrayList<Case> data;
 
 
     public Buffer(int size) {
 
         this.data = new ArrayList<>();
-        this.size = size;
         for (int i = 0; i < size; i++) {
             data.add(new Case("-1", 0));
         }
@@ -35,7 +33,4 @@ public class Buffer {
         return this.data.indexOf(new Case(caseData));
     }
 
-    public int getSize() {
-        return size;
-    }
 }
