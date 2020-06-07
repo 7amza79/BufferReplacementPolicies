@@ -7,12 +7,12 @@ import com.hamza.projects.buffer.replacement.exceptions.CannotCreateProcessorObj
 import java.util.List;
 
 public class SecondChanceProcessor {
-
+// Also named as Clock processor
     private SecondChanceProcessor() throws CannotCreateProcessorObjectException {
         throw new CannotCreateProcessorObjectException();
     }
 
-    public static int processSecondChance(List<Integer> inputData, int bufferLimitSize) {
+    public static int process(List<Integer> inputData, int bufferLimitSize) {
 
         int pointer;
         int last = -1;

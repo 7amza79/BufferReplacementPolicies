@@ -12,7 +12,7 @@ public class LruProcessor {
         throw new CannotCreateProcessorObjectException();
     }
 
-    public static int processLRU(List<Integer> inputData, int bufferSize) {
+    public static int process(List<Integer> inputData, int bufferSize) {
         int missingPagesCount = 0;
         // set first elements
         Buffer buffer = new Buffer(bufferSize);

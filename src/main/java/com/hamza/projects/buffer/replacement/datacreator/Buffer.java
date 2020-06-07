@@ -33,10 +33,6 @@ public class Buffer {
         return this.data.size() == this.bufferLimitSize;
     }
 
-    public boolean isEmpty() {
-        return this.data.isEmpty();
-    }
-
     public boolean contains(String caseData) {
         return this.data.stream().anyMatch(aCase -> aCase.getFrame().equals(caseData));
     }
@@ -47,10 +43,6 @@ public class Buffer {
 
     public int getBufferSize() {
         return this.data.size();
-    }
-
-    public int getBufferLimitSize() {
-        return this.bufferLimitSize;
     }
 
 }

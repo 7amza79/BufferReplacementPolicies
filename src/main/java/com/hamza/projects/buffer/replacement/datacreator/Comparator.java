@@ -1,5 +1,8 @@
 package com.hamza.projects.buffer.replacement.datacreator;
 
+import com.hamza.projects.buffer.replacement.datacreator.algorithmsprocessors.FifoProcessor;
+import com.hamza.projects.buffer.replacement.datacreator.algorithmsprocessors.LruProcessor;
+import com.hamza.projects.buffer.replacement.datacreator.algorithmsprocessors.SecondChanceProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -9,10 +12,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import static com.hamza.projects.buffer.replacement.datacreator.algorithmsprocessors.FifoProcessor.processFIFO;
-import static com.hamza.projects.buffer.replacement.datacreator.algorithmsprocessors.LruProcessor.processLRU;
-import static com.hamza.projects.buffer.replacement.datacreator.algorithmsprocessors.SecondChanceProcessor.processSecondChance;
 
 public class Comparator {
 
@@ -36,11 +35,11 @@ public class Comparator {
 
                 List<Integer> input = initializeInputData(INPUT_SIZE);
 
-                int missingSecondChancePages = processSecondChance(input, bufferSize);
+                int missingSecondChancePages = SecondChanceProcessor.process(input, bufferSize);
 
-                int missingFifoPages = processFIFO(input, bufferSize);
+                int missingFifoPages = FifoProcessor.process(input, bufferSize);
 
-                int missingLruPages = processLRU(input, bufferSize);
+                int missingLruPages = LruProcessor.process(input, bufferSize);
 
                 String s = bufferSize + "," + missingSecondChancePages + "," + missingFifoPages + "," + missingLruPages;
                 writer.println(s);

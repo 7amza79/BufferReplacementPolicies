@@ -12,7 +12,7 @@ public class FifoProcessor {
         throw new CannotCreateProcessorObjectException();
     }
 
-    public static int processFIFO(List<Integer> inputData, final Integer bufferSize) {
+    public static int process(List<Integer> inputData, final Integer bufferSize) {
         int missingPagesCount = 0;
         int caseToUpdateIndex = 0;
         // set first elements
