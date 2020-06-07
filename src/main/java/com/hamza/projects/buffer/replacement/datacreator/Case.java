@@ -6,11 +6,10 @@
 package com.hamza.projects.buffer.replacement.datacreator;
 
 /**
- *
  * @author Hamza
  */
 public class Case {
-    
+
     private String frame;
     private int flag;
 
@@ -22,7 +21,7 @@ public class Case {
         this.frame = frame;
     }
 
-   
+
     public int getFlag() {
         return flag;
     }
@@ -35,11 +34,11 @@ public class Case {
         this.frame = frame;
         this.flag = flag;
     }
-    
-    public Case(){
-        this.frame="-1";
-        this.flag=0;
+
+    public Case() {
+        this.frame = "-1";
+        this.flag = 0;
     }
-    
-    
+
+
 }
