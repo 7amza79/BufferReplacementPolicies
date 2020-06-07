@@ -6,11 +6,14 @@ public class Buffer {
 
     private final ArrayList<Case> data;
 
+    private final int bufferLimitSize;
+
     public Buffer(int size) {
+        bufferLimitSize = size;
         this.data = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            data.add(new Case("-1", 0));
-        }
+        //for (int i = 0; i < size; i++) {
+        //    data.add(new Case("-1", 0));
+        //}
 
     }
 
@@ -18,16 +21,28 @@ public class Buffer {
         this.data.set(place, a);
     }
 
+    public void insertCase(Case a) {
+        this.data.add(a);
+    }
+
     public Case elementAt(int i) {
         return this.data.get(i);
     }
 
-    public boolean exist(String a) {
-        return this.data.stream().anyMatch(aCase -> aCase.getFrame().equals(a));
+    public boolean isFull() {
+        return this.data.size() == this.bufferLimitSize;
+    }
+
+    public boolean contains(String caseData) {
+        return this.data.stream().anyMatch(aCase -> aCase.getFrame().equals(caseData));
     }
 
     public int existAt(String caseData) {
         return this.data.indexOf(new Case(caseData));
+    }
+
+    public int getBufferSize() {
+        return this.data.size();
     }
 
 }
