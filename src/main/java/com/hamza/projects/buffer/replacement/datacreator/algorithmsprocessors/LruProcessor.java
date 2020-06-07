@@ -21,29 +21,33 @@ public class LruProcessor {
             // if the element exists
             // search the index and put the item in the front case and push back all the other items
 
-            if (buffer.exist(caseData.toString())) {
+            if (buffer.contains(caseData.toString())) {
 
                 final int searchedCasePosition = buffer.existAt(caseData.toString());
                 Case caseToUpdate = buffer.elementAt(searchedCasePosition);
 
-                for (int k = searchedCasePosition; k < (bufferSize - 1); k++) {
+                for (int k = searchedCasePosition; k < (buffer.getBufferSize() - 1); k++) {
                     buffer.insertCase(buffer.elementAt(k + 1), k);
                 }
-                buffer.insertCase(caseToUpdate, bufferSize - 1);
+                buffer.insertCase(caseToUpdate, buffer.getBufferSize() - 1);
 
 
             } else {
-                // if the item doesn't exist in the buffer  we push back all the
+                // if the item doesn't contains in the buffer  we push back all the
                 // items and we put the input item in the front
 
-                for (int k = 0; k < (bufferSize - 1); k++) {
-                    buffer.insertCase(buffer.elementAt(k + 1), k);
+                if (!buffer.isFull()) {
+                    buffer.insertCase(new Case(caseData.toString(), 0));
+                } else {
+                    for (int k = 0; k < (buffer.getBufferSize() - 1); k++) {
+                        buffer.insertCase(buffer.elementAt(k + 1), k);
 
+                    }
+                    Case caseToBeInserted = new Case(caseData.toString(), 0);
+                    buffer.insertCase(caseToBeInserted, buffer.getBufferSize() - 1);
+
+                    missingPagesCount++;
                 }
-                Case caseToBeInserted = new Case(caseData.toString(), 0);
-                buffer.insertCase(caseToBeInserted, bufferSize - 1);
-
-                missingPagesCount++;
             }
 
         }

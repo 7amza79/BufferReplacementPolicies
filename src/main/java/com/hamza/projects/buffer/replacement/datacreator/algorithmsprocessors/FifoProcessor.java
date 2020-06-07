@@ -23,13 +23,17 @@ public class FifoProcessor {
             /*
             parse all the buffer to search
             if the element exists, nothing is to be done
-            if the element does not exist, it should be insert and fault pages count incremented
+            if the element does not contains, it should be insert and fault pages count incremented
             */
 
-            if (!buffer.exist(caseData.toString())) {
-                buffer.insertCase(new Case(caseData.toString(), 0), caseToUpdateIndex);
-                caseToUpdateIndex = (caseToUpdateIndex + 1) % bufferSize;
-                missingPagesCount++;
+            if (!buffer.contains(caseData.toString())) {
+                if (!buffer.isFull()) {
+                    buffer.insertCase(new Case(caseData.toString()));
+                } else {
+                    buffer.insertCase(new Case(caseData.toString(), 0), caseToUpdateIndex);
+                    caseToUpdateIndex = (caseToUpdateIndex + 1) % bufferSize;
+                    missingPagesCount++;
+                }
             }
         }
         return missingPagesCount;
