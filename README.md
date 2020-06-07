@@ -1,9 +1,19 @@
 # BufferReplacementPolicies
-This Work is made to compare buffer replacement policies FIFO, LRU and Clock Algorithm with simple implementations and providing a Data oriented analysis with experiments and data visualisations considering the page faults parameter evolution.
+This code has been developed to compare buffer replacement policies FIFO, LRU and Clock Algorithm with simple implementation.
+It uses providing a Data oriented analysis with experiments and data visualisations considering the page faults parameter evolution.
 
-In order To use it, import the project, change the output CSV file path and run the project.
-TO visualise the graphics, change the CSV file path and PNG output PATH in the the R script "graphic result.R" and run it.
 
-An example of Output is provided.
+
+###Requirements
+JDK 11 used.
+R 4.0 used.
+
+
+###Usage
+Clone the project.
+Run the main class Comparator.
+Output will be saved in a CSV ouput file.
+
+To visualise the graphics run the R script provided in visualisation package. Output will be generated in a png file.
 
 
